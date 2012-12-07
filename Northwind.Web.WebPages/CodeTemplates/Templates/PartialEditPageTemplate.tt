@@ -1,0 +1,89 @@
+﻿<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.ComponentModel.DataAnnotations" #>
+<#@ assembly name="System.ComponentModel.DataAnnotations" #>
+<#+
+// <copyright file="PartialViewPageTemplate.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class PartialEditPageTemplate : BaseTemplate
+{
+	public override string TransformText()
+	{
+		var method = this.ControllerType.GetMethods()
+										.Where(m => m.Name == "Get"
+													&& !m.ReturnType.IsGenericType)
+										.FirstOrDefault();
+
+		if (method == null) {
+			return string.Empty;
+		}
+
+		var modelType = method.ReturnType;
+		var modelProperties = modelType.GetProperties()
+									   .Where(p => p.PropertyType != typeof(System.Collections.IEnumerable))
+									   .OrderBy(p => p.MetadataToken);;
+#>
+<!-- model type: <#= modelType.FullName #> -->
+<form action='@Url.ApiUrl("<#= this.ControllerType.Name.Replace("Controller", "") #>")' method="put" class="form-horizontal">
+<#+
+		foreach(var property in modelProperties)
+		{
+			if (Attribute.IsDefined(property, typeof(EditableAttribute))
+				&& (Attribute.GetCustomAttribute(property, typeof(EditableAttribute)) as EditableAttribute).AllowEdit)
+			{
+				var inputTypeName = "text";
+				var multiLine = false;
+				if (Attribute.IsDefined(property, typeof(DataTypeAttribute))) {
+					var attribute = Attribute.GetCustomAttribute(property, typeof(DataTypeAttribute)) as DataTypeAttribute;
+
+					if (attribute != null) { 
+						inputTypeName = attribute.DataType.ToString("F").ToLowerInvariant(); 
+
+						if (inputTypeName.Equals("custom", StringComparison.OrdinalIgnoreCase)) {
+							inputTypeName = attribute.CustomDataType;
+						}
+						else if (inputTypeName.Equals("phonenumber", StringComparison.OrdinalIgnoreCase)) {
+							inputTypeName = "tel";
+						}
+						multiLine = (attribute.DataType == DataType.MultilineText || attribute.DataType == DataType.Html);
+					}
+				}
+#>
+    <div class="control-group">
+        <label class="control-label" for="<#= property.Name #>"><#= ToFriendlyName(property.Name) #></label>
+        <div class="controls">
+<#+  
+				if (multiLine)
+				{ 
+#>
+			<textarea id="<#= property.Name #>" name="<#= property.Name #>" class="<#= inputTypeName #>" data-bind="text: <#= property.Name #>"></textarea>
+<#+
+				}
+				else
+				{
+#>
+			<input id="<#= property.Name #>" name="<#= property.Name #>" type="<#= inputTypeName #>" data-bind="value: <#= property.Name #>" />
+<#+  
+				}
+#>
+		</div>
+    </div>
+<#+
+			}
+			else
+			{
+#>
+			<input id="<#= property.Name #>" name="<#= property.Name #>" type="hidden" data-bind="value: <#= property.Name #>" />	
+<#+  
+			}
+		}
+#>
+</form>
+<#+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

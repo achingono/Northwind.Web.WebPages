@@ -1,0 +1,64 @@
+<!-- model type: Northwind.Web.Models.CustomerDetailModel -->
+<form action='@Url.ApiUrl("Customers")' method="put" class="form-horizontal">
+			<input id="Id" name="Id" type="hidden" data-bind="value: Id" />	
+    <div class="control-group">
+        <label class="control-label" for="Name">Name </label>
+        <div class="controls">
+			<input id="Name" name="Name" type="text" data-bind="value: Name" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="ContactName">Contact Name </label>
+        <div class="controls">
+			<input id="ContactName" name="ContactName" type="text" data-bind="value: ContactName" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="ContactTitle">Contact Title </label>
+        <div class="controls">
+			<input id="ContactTitle" name="ContactTitle" type="text" data-bind="value: ContactTitle" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Address">Address </label>
+        <div class="controls">
+			<input id="Address" name="Address" type="text" data-bind="value: Address" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="City">City </label>
+        <div class="controls">
+			<input id="City" name="City" type="text" data-bind="value: City" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Region">Region </label>
+        <div class="controls">
+			<input id="Region" name="Region" type="text" data-bind="value: Region" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="PostalCode">Postal Code </label>
+        <div class="controls">
+			<input id="PostalCode" name="PostalCode" type="text" data-bind="value: PostalCode" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Country">Country </label>
+        <div class="controls">
+			<input id="Country" name="Country" type="text" data-bind="value: Country" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Phone">Phone </label>
+        <div class="controls">
+			<input id="Phone" name="Phone" type="tel" data-bind="value: Phone" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Fax">fax </label>
+        <div class="controls">
+			<input id="Fax" name="Fax" type="tel" data-bind="value: Fax" />
+		</div>
+    </div>
+</form>

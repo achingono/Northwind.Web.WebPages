@@ -1,0 +1,26 @@
+<!-- model type: Northwind.Web.Models.OrderModel -->
+<form action='@Url.ApiUrl("Orders")' method="put" class="form-horizontal">
+			<input id="Id" name="Id" type="hidden" data-bind="value: Id" />	
+			<input id="CustomerName" name="CustomerName" type="hidden" data-bind="value: CustomerName" />	
+			<input id="EmployeeName" name="EmployeeName" type="hidden" data-bind="value: EmployeeName" />	
+			<input id="Date" name="Date" type="hidden" data-bind="value: Date" />	
+    <div class="control-group">
+        <label class="control-label" for="RequiredDate">Required Date </label>
+        <div class="controls">
+			<input id="RequiredDate" name="RequiredDate" type="date" data-bind="value: RequiredDate" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Shipped">Shipped </label>
+        <div class="controls">
+			<input id="Shipped" name="Shipped" type="checkbox" data-bind="value: Shipped" />
+		</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="ShippedDate">Shipped Date </label>
+        <div class="controls">
+			<input id="ShippedDate" name="ShippedDate" type="date" data-bind="value: ShippedDate" />
+		</div>
+    </div>
+			<input id="Total" name="Total" type="hidden" data-bind="value: Total" />	
+</form>

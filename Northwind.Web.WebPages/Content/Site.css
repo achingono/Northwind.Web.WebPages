@@ -1,0 +1,16 @@
+﻿@import "bootstrap.min.css";
+@import "bootstrap-responsive.min.css";
+
+body {
+}
+
+#modal {
+    width: auto;
+    min-width: 560px;
+}
+.nowrap {
+    white-space: nowrap;
+}
+.tl, .table td.tl { text-align: left }
+.tr, .table td.tr { text-align: right }
+.tc, .table td.tc { text-align: center }

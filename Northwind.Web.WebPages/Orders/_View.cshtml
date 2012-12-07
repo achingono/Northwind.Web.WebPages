@@ -1,0 +1,34 @@
+<!-- model type: Northwind.Web.Models.OrderModel -->
+<div class="row">
+    <div class="span2"><strong>id </strong></div>
+    <div class="span3" data-bind="text: Id"></div>
+</div>
+<div class="row">
+    <div class="span2"><strong>Customer Name </strong></div>
+    <div class="span3" data-bind="text: CustomerName"></div>
+</div>
+<div class="row">
+    <div class="span2"><strong>Employee Name </strong></div>
+    <div class="span3" data-bind="text: EmployeeName"></div>
+</div>
+<div class="row">
+    <div class="span2"><strong>Date </strong></div>
+    <div class="span3" data-bind="text: Date"></div>
+</div>
+<div class="row">
+    <div class="span2"><strong>Required Date </strong></div>
+    <div class="span3" data-bind="text: RequiredDate"></div>
+</div>
+<div class="row">
+    <div class="span2"><strong>Shipped </strong></div>
+    <div class="span3" data-bind="text: Shipped"></div>
+</div>
+<div class="row">
+    <div class="span2"><strong>Shipped Date </strong></div>
+    <div class="span3" data-bind="text: ShippedDate"></div>
+</div>
+<div class="row">
+    <div class="span2"><strong>Total </strong></div>
+    <div class="span3" data-bind="text: '$' + Total().toFixed(2)"></div>
+</div>
+@RenderPage("_Details.cshtml")

@@ -1,0 +1,51 @@
+﻿@{
+    RouteTable.Routes.Ignore("{resource}.axd/{*pathInfo}");
+    RouteTable.Routes.Ignore("favicon.ico");
+    
+    RouteTable.Routes.MapHttpRoute(
+        name: "Api",
+        routeTemplate: "api/{controller}/{id}",
+        defaults: new { controller = "Default", id = RouteParameter.Optional }
+        //constraints: new { id = @"([-+]?\d+)?" }
+    );
+
+    @*
+    // if {id} is not specified, 
+    // use the default presenter and template
+    RouteTable.Routes.Add("Page", new Route(
+        url: "{folder}/{page}/{id}",
+        defaults: new RouteValueDictionary { 
+            { "folder", "Home" }, 
+            { "page", "Default" }, 
+            { "id", RouteParameter.Optional }
+        },
+        constraints: new RouteValueDictionary { 
+            { "folder", @"(\w+)?" }, 
+            { "page", @"(\w+)?" }, 
+            { "id", @"(\d+)?" }
+        },
+        routeHandler: new WebPageRouteHandler(
+            virtualPath: "~/Pages/{folder}/{page}.cshtml",
+            checkAccess: true
+        )
+    ));
+
+    // if {id} is specified
+    // use the 'View' template unless specified
+    RouteTable.Routes.Add("Default", new Route(
+        url: "{folder}/{page}/{id}",
+        defaults: new RouteValueDictionary { 
+            { "page", "View" }
+        },
+        constraints: new RouteValueDictionary { 
+            { "folder", @"\w+" }, 
+            { "page", @"(\w+)?" }, 
+            { "id", @"\d+" }
+        },
+        routeHandler: new WebPageRouteHandler(
+            virtualPath: "~/Pages/{folder}/{page}.cshtml",
+            checkAccess: true
+        )
+    ));
+    *@
+}

@@ -1,0 +1,50 @@
+﻿<#@ assembly name="D:\Projects\VisualStudio\Demos\Northwind\Northwind.Web.WebPages\bin\Northwind.Web.dll" #>
+<#@ assembly name="D:\Projects\VisualStudio\Demos\Northwind\Northwind.Web.WebPages\bin\System.Web.Http.dll" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ include file="..\Templates\BaseTemplate.tt" #>
+<#@ include file="..\Templates\DefaultPageTemplate.tt" #>
+<#@ include file="..\Templates\PartialViewPageTemplate.tt" #>
+<#@ include file="..\Templates\PartialEditPageTemplate.tt" #>
+<#+
+// <copyright file="PageGenerator.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class PageGenerator : Generator
+{
+	protected override void RunCore()
+	{
+		var baseControllerType = typeof(Northwind.Web.Api.BaseApiController);
+		var controllerTypes = baseControllerType.Assembly.GetTypes()
+                                     .Where(t => baseControllerType.IsAssignableFrom(t)
+											  && t.Name != "BaseApiController"
+											  && t.Name != "SummaryController");
+
+		foreach(Type controllerType in controllerTypes) 
+		{
+			CreatePages(controllerType);
+		}
+	}
+
+	private void CreateFile(Type controllerType, BaseTemplate template, string path) 
+	{
+		template.ControllerType = controllerType;
+		template.RenderToFile(path);
+	}
+	
+	private void CreatePages(Type controllerType) {
+		string folderName = controllerType.Name.Replace("Controller", "");
+		string basePath = string.Format(@"..\{0}", folderName);
+
+		CreateFile(controllerType, new DefaultPageTemplate(), 
+			string.Format(@"{0}\Default.cshtml", basePath));
+		CreateFile(controllerType, new PartialViewPageTemplate(), 
+			string.Format(@"{0}\_View.cshtml", basePath));
+		CreateFile(controllerType, new PartialEditPageTemplate(), 
+			string.Format(@"{0}\_Edit.cshtml", basePath));	
+	}
+}
+#>

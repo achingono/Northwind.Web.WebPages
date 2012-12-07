@@ -1,0 +1,19 @@
+﻿@{
+    
+}
+<div id="slideshow" class="carousel slide">
+    <div class="carousel-inner">
+    @foreach (var item in Page.Items)
+    { 
+        <div class="item">
+            <img src="@item.ImageUrl" alt="@item.Description" />
+            <div class="carousel-caption">
+                <h4>@item.Title</h4>
+                <p>@item.Description</p>
+            </div>
+        </div>
+    }
+    </div>
+    <a class="left carousel-control" href="#slideshow" data-slide="prev">‹</a> 
+    <a class="right carousel-control" href="#slideshow" data-slide="next">›</a>
+</div>

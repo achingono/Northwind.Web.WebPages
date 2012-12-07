@@ -1,0 +1,8 @@
+<#@ template language="C#" hostspecific="True" debug="True" #>
+<#@ output extension="txt" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="Generators\PageGenerator.tt" #>
+<#
+	PageGenerator generator = new PageGenerator();
+	generator.Run();
+#>

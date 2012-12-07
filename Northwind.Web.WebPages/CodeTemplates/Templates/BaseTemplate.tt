@@ -1,0 +1,41 @@
+﻿<#+
+// <copyright file="BaseTemplate.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public abstract class BaseTemplate : Template
+{
+	public Type ControllerType { get; set; }
+
+	protected string ToFriendlyName(string name) 
+	{
+		Regex r = new Regex("([A-Z]+[a-z]+)");
+		return r.Replace(name, m => (m.Value.Length > 3 ? m.Value : m.Value.ToLower()) + " ");
+	}
+
+    protected string ToPluralName(string name)
+    {
+		if (Regex.IsMatch(name, "ies$") || Regex.IsMatch(name, "ses$") || Regex.IsMatch(name, "[^aeiou]s$"))
+			return name;
+		
+		if (Regex.IsMatch(name, "y$"))
+			name = Regex.Replace(name, "y$", "ies");
+		else if (Regex.IsMatch(name, "s$"))
+			name = Regex.Replace(name, "s$", "ses");
+		else
+			name = name + "s";
+		return name;
+    }
+
+    protected static string ToSingularName(string name)
+    {
+		if (Regex.IsMatch(name, "ies$"))
+			name = Regex.Replace(name, "ies$", "y");
+		else if (Regex.IsMatch(name, "ses$"))
+			name = Regex.Replace(name, "ses$", "s");
+		else
+			name = Regex.Replace(name, "s$", "");
+		return name;
+    }
+}
+#>

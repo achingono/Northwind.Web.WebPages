@@ -1,0 +1,35 @@
+﻿<div class="row-fluid">
+    <h4>OrderDetails</h4>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+			                <th>Product Name </th>
+			                <th class="tr">Unit Price </th>
+			                <th class="tr">Quantity </th>
+			                <th class="tr">Discount </th>
+			                <th class="tr">Total </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: Details">
+            <tr>
+			                <td data-bind="text: ProductName"></td>
+			                <td data-bind="text: '$' + UnitPrice().toFixed(2)" class="tr"></td>
+			                <td data-bind="text: Quantity" class="tr"></td>
+			                <td data-bind="text: Discount() * 100 + '%'" class="tr"></td>
+			                <td class="tr">
+                                <strong data-bind="text: '$' + Total().toFixed(2)"></strong>
+                            </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">
+                    <strong>Order Total</strong>
+                </td>
+                <td class="tr">
+                    <strong data-bind="text: '$' + Total().toFixed(2)"></strong>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

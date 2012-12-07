@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Data", "Northwind.Data\Northwind.Data.csproj", "{1B5CBAD9-F04F-4744-AC99-FA188552034D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Web", "Northwind.Web\Northwind.Web.csproj", "{6A6D5D5F-3F6B-4801-ABE8-FC27BA9057A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Web.WebPages", "Northwind.Web.WebPages\Northwind.Web.WebPages.csproj", "{9EEE8EEF-9797-4892-9A73-F1B48D162A07}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B5CBAD9-F04F-4744-AC99-FA188552034D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B5CBAD9-F04F-4744-AC99-FA188552034D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B5CBAD9-F04F-4744-AC99-FA188552034D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B5CBAD9-F04F-4744-AC99-FA188552034D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A6D5D5F-3F6B-4801-ABE8-FC27BA9057A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A6D5D5F-3F6B-4801-ABE8-FC27BA9057A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A6D5D5F-3F6B-4801-ABE8-FC27BA9057A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A6D5D5F-3F6B-4801-ABE8-FC27BA9057A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EEE8EEF-9797-4892-9A73-F1B48D162A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EEE8EEF-9797-4892-9A73-F1B48D162A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EEE8EEF-9797-4892-9A73-F1B48D162A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EEE8EEF-9797-4892-9A73-F1B48D162A07}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

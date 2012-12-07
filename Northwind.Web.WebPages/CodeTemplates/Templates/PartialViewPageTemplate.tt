@@ -1,0 +1,60 @@
+﻿<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.Reflection" #>
+<#+
+// <copyright file="PartialViewPageTemplate.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class PartialViewPageTemplate : BaseTemplate
+{
+	public override string TransformText()
+	{
+		var method = this.ControllerType.GetMethods()
+										.Where(m => m.Name == "Get"
+													&& !m.ReturnType.IsGenericType)
+										.FirstOrDefault();
+
+		if (method == null) {
+			return string.Empty;
+		}
+
+		var modelType = method.ReturnType;
+		var modelProperties = modelType.GetProperties()
+									   .Where(p => p.PropertyType != typeof(System.Collections.IEnumerable))
+									   .OrderBy(p => p.MetadataToken);;
+#>
+<!-- model type: <#= modelType.FullName #> -->
+<#+
+		foreach(var property in modelProperties)
+		{
+#>
+<div class="row">
+    <div class="span2"><strong><#= ToFriendlyName(property.Name) #></strong></div>
+<#+  
+			if (property.PropertyType == typeof(decimal) || property.PropertyType == typeof(decimal?)) 
+			{
+#>
+    <div class="span3" data-bind="text: '$' + <#= property.Name #>().toFixed(2)"></div>
+<#+  
+			} else {
+#>
+    <div class="span3" data-bind="text: <#= property.Name #>"></div>
+<#+
+			}
+#>
+</div>
+<#+  
+		}
+
+		if(modelType.Name.Equals("OrderModel", StringComparison.OrdinalIgnoreCase)) {
+#>
+@RenderPage("_Details.cshtml")
+<#+  
+
+		}
+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

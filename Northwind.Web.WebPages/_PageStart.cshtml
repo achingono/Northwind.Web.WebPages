@@ -1,0 +1,21 @@
+﻿@{
+    Layout = "~/Shared/_Layout.cshtml";
+    Page.PageSize = ConfigurationManager.AppSettings["Data.PageSize"];
+
+    //var uriBuilder = new UriBuilder(HttpContext.Current.Request.Url)
+    //{
+    //    Path = VirtualPathUtility.ToAbsolute(Url.ApiUrl("Summary")),
+    //};
+
+    //var client = new System.Net.Http.HttpClient();
+    //client.GetAsync(uriBuilder.ToString())
+    //      .ContinueWith(t =>
+    //        {
+    //            t.Result.Content.ReadAsStringAsync()
+    //                    .ContinueWith(r =>
+    //                    {
+    //                        var json = r.Result;
+    //                        Page.Summary = System.Web.Helpers.Json.Decode(json);
+    //                    });
+    //        });
+}

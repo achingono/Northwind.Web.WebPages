@@ -1,0 +1,57 @@
+﻿<form action='@Url.ApiUrl("Employees")' method="post" class="form-horizontal">
+    <div class="control-group">
+        <label class="control-label" for="FirstName">First Name</label>
+        <div class="controls"><input id="FirstName" name="FirstName" type="text" data-bind="value: FirstName" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="LastName">Last Name</label>
+        <div class="controls"><input id="LastName" name="LastName" type="text" data-bind="value: LastName" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Title">Title</label>
+        <div class="controls"><input id="Title" name="Title" type="text" data-bind="value: Title" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="HireDate">Hire Date</label>
+        <div class="controls"><input id="HireDate" name="HireDate" type="date" data-bind="value: HireDate" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Address">Address</label>
+        <div class="controls"><textarea id="Address" name="Address" data-bind="value: Address" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="City">City</label>
+        <div class="controls"><input id="City" name="City" type="text" data-bind="value: City" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Region">Region</label>
+        <div class="controls"><input id="Region" name="Region" type="text" data-bind="value: Region" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="PostalCode">Postal Code</label>
+        <div class="controls"><input id="PostalCode" name="PostalCode" type="text" data-bind="value: PostalCode" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Country">Country</label>
+        <div class="controls"><input id="Country" name="Country" type="text" data-bind="value: Country" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="HomePhone">Home Phone</label>
+        <div class="controls"><input id="HomePhome" name="HomePhone" type="text" data-bind="value: HomePhone" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="Extension">Extension</label>
+        <div class="controls"><input id="Extension" name="Extension" type="text" data-bind="value: Extension" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="HireDate">Notes</label>
+        <div class="controls"><textarea id="Notes" name="Notes" data-bind="value: Notes" /></div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="ManagerId">Manager</label>
+        <div class="controls">
+            <input id="Manager" name="Manager" type="text" data-bind="value: Manager" />
+            <input id="ManagerId" name="ManagerId" type="hidden" data-bind="value: ManagerId" />
+        </div>
+    </div>
+</form>

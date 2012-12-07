@@ -1,0 +1,39 @@
+﻿@{  
+    Page.Title = "Welcome to the Razor Demo";
+    Page.ApiController = "Summary";
+}
+
+<div class="row-fluid" data-bind="with: @Page.ApiController">
+    <h1>Northwind</h1>
+    <div class="row-fluid">
+        <div class="span6 well">
+            <h3><i class="icon-user"></i> Employees</h3>
+            <p>There are currently <strong data-bind="text: Employees"></strong> employees in the system</p>
+            <a class="btn btn-primary" href="/Employees"><i class="icon-eye-open icon-white"></i> View</a>
+        </div>
+        <div class="span6 well">
+            <h3><i class="icon-plane"></i> Customers</h3>
+            <p>There are currently <strong data-bind="text: Customers"></strong> customers in the system</p>
+            <a class="btn btn-primary" href="/Customers"><i class="icon-eye-open icon-white"></i> View</a>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6 well">
+            <h3><i class="icon-inbox"></i> Suppliers</h3>
+            <p>There are currently <strong data-bind="text: Suppliers"></strong> suppliers in the system</p>
+            <a class="btn btn-primary" href="/Suppliers"><i class="icon-eye-open icon-white"></i> View</a>
+        </div>
+        <div class="span6 well">
+            <h3><i class="icon-hdd"></i> Products</h3>
+            <p>There are currently <strong data-bind="text: Products"></strong> products in the system</p>
+            <a class="btn btn-primary" href="/Products"><i class="icon-eye-open icon-white"></i> View</a>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="well">
+            <h3><i class="icon-shopping-cart"></i> Orders</h3>
+            <p>There are currently <strong data-bind="text: Orders"></strong> orders in the system</p>
+            <a class="btn btn-primary" href="/Orders"><i class="icon-eye-open icon-white"></i> View</a>
+        </div>
+    </div>
+</div>
