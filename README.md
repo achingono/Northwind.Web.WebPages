@@ -1,6 +1,8 @@
 Alfero's Northwind Project
 ================================
 
+NOTE: a newer version of this project is avaliable at https://github.com/achingono/Northwind
+
 This project is a demonstration of several technologies
 
 * Entity Framework Code-First
