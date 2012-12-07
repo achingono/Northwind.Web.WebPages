@@ -95,19 +95,22 @@ $(function () {
         var page = target.data('page');
         // get the current page number from the view model
         var currentPage = viewModel.Page.Number();
+        // regular expression to match signed integers
+        var expression = /^\s*[+-]\d+\s*$/;
 
         // update the page number 
-        if (page == '+1') {
-            viewModel.Page.Number(currentPage + 1);
-        }
-        else if (page == '-1' && currentPage > 0) {
-            viewModel.Page.Number(currentPage - 1);
-        }
-        else {
-            var pageNumber = parseInt(page) || 0;
-            if (pageNumber > 0) {
-                viewModel.Page.Number(pageNumber);
+        if (expression.test(page)) {
+            // the page is a signed integer, 
+            // so we calculate by adding/subtracting from the current page
+            var newPage = eval('currentPage' + page);
+            if (newPage >= 0 && newPage < viewModel.Page.List().length) {
+                viewModel.Page.Number(newPage);
             }
+        }
+        else if (page >= 0 && page < viewModel.Page.List().length) {
+            // the page is just a number
+            // so assign it directly
+            viewModel.Page.Number(page);
         }
     });
 
